@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentMain">
 
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name="kz.uib.fragmentadvanced.FragmentMain"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentViewBalance"
+            app:destination="@id/fragmentViewBalance" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentChooseRec"
+            app:destination="@id/fragmentChooseRec" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentSpecifyAmount"
+            app:destination="@id/fragmentSpecifyAmount" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentViewBalance"
+        android:name="kz.uib.fragmentadvanced.FragmentViewBalance"
+        android:label="fragment_view_balance"
+        tools:layout="@layout/fragment_view_balance" />
+
+    <fragment
+        android:id="@+id/fragmentChooseRec"
+        android:name="kz.uib.fragmentadvanced.FragmentChooseRec"
+        android:label="fragment_choose_rec"
+        tools:layout="@layout/fragment_choose_rec" />
+    <fragment
+        android:id="@+id/fragmentConfirmation"
+        android:name="kz.uib.fragmentadvanced.FragmentConfirmation"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" />
+    <fragment
+        android:id="@+id/fragmentSpecifyAmount"
+        android:name="kz.uib.fragmentadvanced.FragmentSpecifyAmount"
+        android:label="fragment_specify_amount"
+        tools:layout="@layout/fragment_specify_amount" >
+        <action
+            android:id="@+id/action_fragmentSpecifyAmount_to_fragmentViewTransaction"
+            app:destination="@id/fragmentViewTransaction" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentViewTransaction"
+        android:name="kz.uib.fragmentadvanced.FragmentViewTransaction"
+        android:label="fragment_viewtransaction"
+        tools:layout="@layout/fragment_viewtransaction" >
+        <action
+            android:id="@+id/action_fragmentViewTransaction_to_fragmentConfirmation"
+            app:destination="@id/fragmentConfirmation" />
+    </fragment>
 </navigation>

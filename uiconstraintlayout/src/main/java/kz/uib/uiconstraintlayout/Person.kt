@@ -1,4 +1,7 @@
 package kz.uib.uiconstraintlayout
 
-class Person {
+class Person(val name: String, val status: String) {
+
+
+
 }

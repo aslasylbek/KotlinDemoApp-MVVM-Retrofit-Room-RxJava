@@ -12,6 +12,7 @@ import kz.uib.kotlinseconproject.Model.CoinFullData
 import kz.uib.kotlinseconproject.Model.CoinPriceInfo
 import kz.uib.kotlinseconproject.api.ApiFactory
 import kz.uib.kotlinseconproject.room.AppDatabase
+import java.util.concurrent.TimeUnit
 
 class CoinViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -27,6 +28,9 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
             .map {  it.data?.map { it.coinInfo?.fullName }?.joinToString(",") }
             .flatMap { ApiFactory.apiService.getFullData(fSymbs = it) }
             .map { getCoinFullDataFromRaw(it) }
+            .delaySubscription(10, TimeUnit.SECONDS)
+            .repeat()
+            .retry()
             .subscribeOn(Schedulers.io())
             .subscribe({
                 db.coinPriceInfoDao().insertPriceList(it)

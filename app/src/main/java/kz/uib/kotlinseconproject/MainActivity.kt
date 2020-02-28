@@ -13,10 +13,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: CoinViewModel
 
 
+    /**
+     *
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider.AndroidViewModelFactory(application).create(CoinViewModel::class.java)
+        viewModel =
+            ViewModelProvider.AndroidViewModelFactory(application).create(CoinViewModel::class.java)
 
 
         viewModel.loadData()
@@ -27,4 +31,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
+
 }

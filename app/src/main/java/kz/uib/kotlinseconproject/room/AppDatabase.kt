@@ -10,16 +10,14 @@ import kz.uib.kotlinseconproject.Model.CoinPriceInfo
 @Database(entities = [CoinPriceInfo::class], version = 1, exportSchema = false)
 abstract class AppDatabase:RoomDatabase() {
 
+
     companion object{
         private var db: AppDatabase? = null
 
         private const val DBName = "main.db"
-
         private val LOCK = Any()
         fun getInstance(context: Context): AppDatabase{
-
             synchronized(LOCK) {
-
                 db?.let {
                     return it
                 }
